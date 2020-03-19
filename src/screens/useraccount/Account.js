@@ -170,8 +170,10 @@ export default class UserAccount extends React.Component {
               style={styles.serviceContainer}
             >
               <View style={styles.textContainer}>
+                <TouchableOpacity onPress={()=>this.props.navigation.navigate("Boucher")}>
                 <Image source={require("@icons/pay.png")} />
                 <Text>To Pay</Text>
+                </TouchableOpacity>
               </View>
               <View style={styles.textContainer}>
                 <Image source={require("@icons/review.png")} />
@@ -196,8 +198,10 @@ export default class UserAccount extends React.Component {
               style={[styles.serviceContainer,{marginBottom:20}]}
             >
               <View style={styles.textContainer}>
+              <TouchableOpacity onPress={()=>this.props.navigation.navigate("Message")}>
                 <Image source={require("@icons/message.png")} />
                 <Text>Message</Text>
+              </TouchableOpacity>
               </View>
               <View style={styles.textContainer}>
                 <Image source={require("@icons/payment.png")} />
