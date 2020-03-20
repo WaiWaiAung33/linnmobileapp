@@ -11,7 +11,7 @@ export default createAppContainer(
           Cart:{
               screen:Cart,
               navigationOptions:()=>({
-                  header:null
+                 headerShown:false
               })
           }
         },

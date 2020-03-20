@@ -11,7 +11,7 @@ export default createAppContainer(
            Home:{
                screen:Home,
                navigationOptions:()=>({
-                   header:null
+                   headerShown:false
                })
            }
         },

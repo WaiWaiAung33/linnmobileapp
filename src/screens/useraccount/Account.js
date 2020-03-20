@@ -170,8 +170,11 @@ export default class UserAccount extends React.Component {
               style={styles.serviceContainer}
             >
               <View style={styles.textContainer}>
+             <TouchableOpacity onPress={()=>this.props.navigation.navigate("test")}>
                 <Image source={require("@icons/pay.png")} />
                 <Text>To Pay</Text>
+                </TouchableOpacity>
+              
               </View>
               <View style={styles.textContainer}>
                 <Image source={require("@icons/review.png")} />

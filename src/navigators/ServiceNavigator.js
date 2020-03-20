@@ -11,7 +11,7 @@ export default createAppContainer(
             Service:{
                 screen:Service,
                 navigationOptions:()=>({
-                    header:null
+                    headerShown:false
                 })
             }    
         },

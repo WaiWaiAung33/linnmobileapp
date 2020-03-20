@@ -23,7 +23,7 @@ export default createAppContainer(
           tabBarIcon: ({ focused, tintColor }) => (
             <Image
               source={require("@icons/promotion.png")}
-              style={[styles.img, (color = { tintColor })]}
+              style={styles.img}
             />
           )
         })
@@ -35,7 +35,7 @@ export default createAppContainer(
           tabBarIcon: ({ focused, tintColor }) => (
             <Image
               source={require("@icons/cart.png")}
-              style={[styles.img, (color = { tintColor })]}
+              style={styles.img}
             />
           )
         })
@@ -49,7 +49,7 @@ export default createAppContainer(
           tabBarIcon: ({ focused, tintColor }) => (
             <Image
               source={require("@icons/home.png")}
-              style={[styles.img, (color = { tintColor })]}
+              style={styles.img}
             />
           )
         })
@@ -61,7 +61,7 @@ export default createAppContainer(
           tabBarIcon: ({ focused, tintColor }) => (
             <Image
               source={require("@icons/service.png")}
-              style={[styles.img, (color = { tintColor })]}
+              style={styles.img}
             />
           )
         })
@@ -70,10 +70,10 @@ export default createAppContainer(
         screen: UserAccountNavigator,
         navigationOptions: () => ({
           title: "Account",
-          tabBarIcon: ({ focused, tintColor }) => (
+          tabBarIcon: ({ focused }) => (
             <Image
               source={require("@icons/account.png")}
-              style={[styles.img, (color = { tintColor })]}
+              style={styles.img}
             />
           )
         })

@@ -11,7 +11,7 @@ export default createAppContainer(
          Account:{
              screen:Account,
              navigationOptions:()=>({
-                 header:null
+                 headerShown:false
              })
          }
         },
