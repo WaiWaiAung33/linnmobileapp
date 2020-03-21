@@ -11,7 +11,7 @@ import HomeNavigator from "./HomeNavigator";
 import UserAccountNavigator from "./UserAccountNavigator";
 import CartNavigator from "./CartNavigator";
 
-import {Image,StyleSheet} from "react-native";
+import { Image, StyleSheet } from "react-native";
 
 export default createAppContainer(
   createBottomTabNavigator(
@@ -19,11 +19,12 @@ export default createAppContainer(
       PromotionNavigator: {
         screen: PromotionNavigator,
         navigationOptions: () => ({
-          title: "Promotion",
+          tabBarLabel: "Promotion",
+          // title: "Promotion",
           tabBarIcon: ({ focused, tintColor }) => (
             <Image
               source={require("@icons/promotion.png")}
-              style={styles.img}
+              style={[styles.img, { tintColor }]}
             />
           )
         })
@@ -31,25 +32,26 @@ export default createAppContainer(
       CartNavigator: {
         screen: CartNavigator,
         navigationOptions: () => ({
-          title: "Cart",
+          tabBarLabel: "Cart",
+          // title: "Cart",
           tabBarIcon: ({ focused, tintColor }) => (
             <Image
               source={require("@icons/cart.png")}
-              style={styles.img}
+              style={[styles.img, { tintColor }]}
             />
           )
         })
       },
-      
 
       HomeNavigator: {
         screen: HomeNavigator,
         navigationOptions: () => ({
-          title: "Home",
+          tabBarLabel: "Home",
+          // title: "Home",
           tabBarIcon: ({ focused, tintColor }) => (
             <Image
-              source={require("@icons/home.png")}
-              style={styles.img}
+              source={require("@icons/homes.png")}
+              style={[styles.img, { tintColor }]}
             />
           )
         })
@@ -57,11 +59,12 @@ export default createAppContainer(
       ServiceNavigator: {
         screen: ServiceNavigator,
         navigationOptions: () => ({
-          title: "Service",
+          tabBarLabel: "Service",
+          // title: "Service",
           tabBarIcon: ({ focused, tintColor }) => (
             <Image
               source={require("@icons/service.png")}
-              style={styles.img}
+              style={[styles.img, { tintColor }]}
             />
           )
         })
@@ -69,29 +72,30 @@ export default createAppContainer(
       UserAccountNavigator: {
         screen: UserAccountNavigator,
         navigationOptions: () => ({
-          title: "Account",
-          tabBarIcon: ({ focused }) => (
+          tabBarLabel: "Account",
+          // title: "Account",
+          tabBarIcon: ({ focused, tintColor }) => (
             <Image
               source={require("@icons/account.png")}
-              style={styles.img}
+              style={[styles.img, { tintColor }]}
             />
           )
         })
-      },
-     
+      }
     },
     {
       initialRouteName: "HomeNavigator",
-      tabBarOptions:{
-        style:{height:70,backgroundColor:"#F4F4F4"},
-        // tabStyle:{height:60}
+      tabBarOptions: {
+        style: { height: 70, backgroundColor: "#F4F4F4" },
+        activeTintColor: "#0757F5",
+        labelStyle: { marginBottom: 15 }
+        // tabStyle:{height:60},
       }
     }
   )
 );
 const styles = StyleSheet.create({
   img: {
-    width: 30,
-    height: 30
+    marginTop: 10
   }
 });

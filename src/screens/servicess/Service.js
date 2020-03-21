@@ -7,7 +7,8 @@ import {
   Image,
   ScrollView,
   TouchableOpacity,
-  TextInput
+  TextInput,
+  ImageBackground
 } from "react-native";
 // import { TextInput } from "react-native-gesture-handler";
 import DatePicker from "react-native-datepicker";
@@ -24,10 +25,24 @@ export default class Service extends React.Component {
         <StatusBar hidden={true}></StatusBar>
         <View style={styles.header}>
           <View style={styles.textContainer}>
-            <Image
+              <ImageBackground   
+              source={require("@icons/cyclewhite.png")}
+              style={{
+                width: 80,
+                height: 80,
+                justifyContent: "center",
+                alignItems: "center"
+              }}>
+                  <Image
+                   source={require("@icons/shoppingcard.png")}
+                   style={{ width: 50, height: 50 }}
+                   />
+
+              </ImageBackground>
+            {/* <Image
               source={require("@images/cart.png")}
               style={styles.cartimg}
-            />
+            /> */}
             <View style={{ marginTop: 20 }}>
               <Text style={styles.pointText}>Total Purchase</Text>
               <Text style={[styles.pointText, { marginLeft: 85 }]}>Point</Text>
@@ -174,7 +189,9 @@ export default class Service extends React.Component {
           <Text style={styles.footerText}>
             "Thank so much for your Purchase"
           </Text>
-          <TouchableOpacity activeOpacity={0.8}>
+          <TouchableOpacity 
+          onPress={()=>this.props.navigation.naivgate("Account")}
+          activeOpacity={0.8}>
             <Image
               source={require("@images/back.png")}
               style={styles.backImg}
@@ -195,8 +212,8 @@ const styles = StyleSheet.create({
   },
   header: {
     width: "100%",
-    height: "20%",
-    backgroundColor: "#F68F74",
+    height: "25%",
+    backgroundColor:"#FC8069",
     justifyContent: "center"
   },
   textContainer: {
@@ -285,7 +302,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10
   },
   headerText: {
-    color: "#1431EB",
+    color: "#3979F7",
     fontSize: 15,
     fontWeight: "bold"
   },
@@ -299,7 +316,7 @@ const styles = StyleSheet.create({
     alignItems: "center"
   },
   footerText: {
-    color: "#1431EB",
+    color: "#3979F7",
     fontSize: 15
   },
   backImg: {

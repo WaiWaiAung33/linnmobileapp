@@ -21,11 +21,11 @@ export default createAppContainer(
           tabBarIcon: ({ focused, tintColor }) => (
             <View style={{alignItems:'center',justifyContent:'center',marginBottom:10}}>
             <ImageBackground
-              source={require("@images/printerback.png")}
+              source={require("@icons/chartback.png")}
               style={{width:35,height:35,alignItems:'center',justifyContent:'center'}}
             >
               <Image
-                source={require("@images/electronicss.png")}
+                source={require("@icons/chat.png")}
                 style={{width:15,height:15,}}
               />
             </ImageBackground>
@@ -41,11 +41,11 @@ export default createAppContainer(
           tabBarIcon: ({ focused, tintColor }) => (
             <View style={{alignItems:'center',justifyContent:'center',marginBottom:10}}>
             <ImageBackground
-              source={require("@images/computer.png")}
+              source={require("@icons/orderback.png")}
               style={{width:35,height:35,alignItems:'center',justifyContent:'center'}}
             >
               <Image
-                source={require("@icons/promotions.png")}
+                source={require("@icons/order.png")}
                 style={{width:15,height:15,}}
               />
             </ImageBackground>
@@ -64,11 +64,11 @@ export default createAppContainer(
           tabBarIcon: ({ focused, tintColor }) => (
             <View style={{alignItems:'center',justifyContent:'center',marginBottom:10}}>
             <ImageBackground
-              source={require("@images/electronicback.png")}
+              source={require("@icons/notiback.png")}
               style={{width:35,height:35,alignItems:'center',justifyContent:'center'}}
             >
               <Image
-                source={require("@icons/Icon awesome-gift.png")}
+                source={require("@icons/noti.png")}
                 style={{width:15,height:15,}}
               />
             </ImageBackground>
@@ -84,11 +84,11 @@ export default createAppContainer(
           tabBarIcon: ({ focused, tintColor }) => (
             <View style={{alignItems:'center',justifyContent:'center',marginBottom:10}}>
             <ImageBackground
-              source={require("@images/computer.png")}
+              source={require("@icons/promoback.png")}
               style={{width:35,height:35,alignItems:'center',justifyContent:'center'}}
             >
               <Image
-                source={require("@icons/promotion.png")}
+                source={require("@icons/speakers.png")}
                 style={{width:15,height:15,}}
               />
             </ImageBackground>

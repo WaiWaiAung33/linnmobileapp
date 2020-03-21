@@ -1,8 +1,9 @@
 import React from "react";
-import { StyleSheet, Text, View, TouchableOpacity, Image,ScrollView } from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 
 //import component
 import Radio from "@components/Radio";
+import Card from "./component/Card";
 
 export default class Cart extends React.Component {
   render() {
@@ -20,7 +21,8 @@ export default class Cart extends React.Component {
             </TouchableOpacity>
           </View>
         </View>
-        <ScrollView>
+        <Card/>
+        {/* <ScrollView>
         <View style={styles.thirdContainer}>
           <Radio />
           <Image source={require("@images/note9.png")} />
@@ -64,7 +66,7 @@ export default class Cart extends React.Component {
             </View>
           </View>
         </View>
-        </ScrollView>
+        </ScrollView> */}
         <View style={styles.bottomCard}>
           <View style={styles.bottom}>
             <View style={{marginLeft:10}}>
@@ -101,13 +103,13 @@ const styles = StyleSheet.create({
     height: "15%",
     backgroundColor: "#FC8069"
   },
-  thirdContainer: {
-    flexDirection: "row",
-    marginTop: 10,
-    backgroundColor: "#F4F4F4",
-    padding: 10,
-    alignItems: "center"
-  },
+  // thirdContainer: {
+  //   flexDirection: "row",
+  //   marginTop: 10,
+  //   backgroundColor: "#F4F4F4",
+  //   padding: 10,
+  //   alignItems: "center"
+  // },
   header: {
     flexDirection: "row",
     justifyContent: "center",
