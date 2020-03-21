@@ -129,7 +129,10 @@ export default class UserAccount extends React.Component {
               </Text>
               <Text style={{ color: "#7AA9F4" }}>Point</Text>
             </View>
-            <TouchableOpacity style={{ justifyContent: "flex-end" }}>
+            <TouchableOpacity
+              onPress={() => this.props.navigation.navigate("OnlineDetail")}
+              style={{ justifyContent: "flex-end" }}
+            >
               <Text style={{ color: "#FC8069" }}>Detail ></Text>
             </TouchableOpacity>
           </View>
@@ -137,7 +140,7 @@ export default class UserAccount extends React.Component {
           <View style={styles.card}>
             <View>
               <Image source={require("@icons/shop.png")} />
-              <Text>Online</Text>
+              <Text>Shop</Text>
             </View>
             <View style={{ bflex: 1, marginLeft: 30 }}>
               <Text
@@ -155,7 +158,10 @@ export default class UserAccount extends React.Component {
               </Text>
               <Text style={{ color: "#7AA9F4" }}>Point</Text>
             </View>
-            <TouchableOpacity style={{ justifyContent: "flex-end" }}>
+            <TouchableOpacity
+              onPress={() => this.props.navigation.navigate("ShopDetail")}
+              style={{ justifyContent: "flex-end" }}
+            >
               <Text style={{ color: "#FC8069" }}>Detail ></Text>
             </TouchableOpacity>
           </View>
@@ -164,62 +170,85 @@ export default class UserAccount extends React.Component {
               style={{ flexDirection: "row", justifyContent: "space-between" }}
             >
               <Text>My Orders</Text>
-              <Text style={{color:"#FC8069"}}>View all Order ></Text>
+              <TouchableOpacity
+                onPress={() =>
+                  this.props.navigation.navigate("All")
+                }
+              >
+                <Text style={{ color: "#FC8069" }}>View all Order ></Text>
+              </TouchableOpacity>
             </View>
-            <View
-              style={styles.serviceContainer}
-            >
-              <View style={styles.textContainer}>
-                <TouchableOpacity onPress={()=>this.props.navigation.navigate("Boucher")}>
-                <Image source={require("@icons/pay.png")} />
-                <Text>To Pay</Text>
+            <View style={styles.serviceContainer}>
+              <View>
+                <TouchableOpacity
+                style={styles.touchBtn}
+                  onPress={() => this.props.navigation.navigate("Boucher")}
+                >
+                  <Image source={require("@icons/pay.png")} />
+                  <Text>To Pay</Text>
                 </TouchableOpacity>
               </View>
-              <View style={styles.textContainer}>
+              <View>
+                <TouchableOpacity style={styles.touchBtn}>
                 <Image source={require("@icons/review.png")} />
                 <Text>Review</Text>
+                </TouchableOpacity>
+               
               </View>
-              <View style={styles.textContainer}>
+              <View>
+                <TouchableOpacity style={styles.touchBtn}>
                 <Image source={require("@icons/recive.png")} />
                 <Text>To Receive</Text>
+                </TouchableOpacity>
+                
               </View>
-              <View style={styles.textContainer}>
+              <View>
+                <TouchableOpacity style={styles.touchBtn}>
                 <Image source={require("@icons/return.png")} />
                 <Text>My Return</Text>
+                </TouchableOpacity>
+               
               </View>
             </View>
           </View>
 
-          <View style={{padding: 10 }}>
-           
-              <Text>My Service</Text>
-          
-            <View
-              style={[styles.serviceContainer,{marginBottom:20}]}
-            >
-              <View style={styles.textContainer}>
-              <TouchableOpacity onPress={()=>this.props.navigation.navigate("Message")}>
-                <Image source={require("@icons/message.png")} />
-                <Text>Message</Text>
-              </TouchableOpacity>
+          <View style={{ padding: 10 }}>
+            <Text>My Service</Text>
+
+            <View style={[styles.serviceContainer, { marginBottom: 20 }]}>
+              <View>
+                <TouchableOpacity
+                 style={styles.touchBtn}
+                  onPress={() => this.props.navigation.navigate("Message")}
+                >
+                  <Image source={require("@icons/message.png")} />
+                  <Text>Message</Text>
+                </TouchableOpacity>
               </View>
-              <View style={styles.textContainer}>
+              <View>
+                <TouchableOpacity style={styles.touchBtn}>
                 <Image source={require("@icons/payment.png")} />
                 <Text>Payment</Text>
                 <Text> Option</Text>
+                </TouchableOpacity>
+               
               </View>
-              <View style={styles.textContainer}>
+              <View>
+                <TouchableOpacity style={styles.touchBtn}>
                 <Image source={require("@icons/helpcenter.png")} />
                 <Text>Help Center</Text>
+                </TouchableOpacity>
+                
               </View>
-              <View style={styles.textContainer}>
+              <View>
+                <TouchableOpacity style={styles.touchBtn}>
                 <Image source={require("@icons/location.png")} />
                 <Text>Shop Location</Text>
+                </TouchableOpacity>
+                
               </View>
             </View>
           </View>
-
-
         </ScrollView>
       </View>
     );
@@ -293,13 +322,13 @@ const styles = StyleSheet.create({
     marginTop: 20,
     padding: 20
   },
-  textContainer:{
-     alignItems: "center",
-      justifyContent: "center" 
-    },
-    serviceContainer:{ 
-      flexDirection: "row",
-       justifyContent: "space-between",
-       marginTop:15
-      }
+  touchBtn: {
+    alignItems: "center",
+    justifyContent: "center"
+  },
+  serviceContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginTop: 15
+  }
 });

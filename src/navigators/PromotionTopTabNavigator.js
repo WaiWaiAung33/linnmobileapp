@@ -8,7 +8,7 @@ import PromoSilent from "@screens/promotion/PromoSilent";
 
 //import React
 import React from "react";
-import { Image, StyleSheet } from "react-native";
+import { Image, StyleSheet,ImageBackground,View} from "react-native";
 
 export default createAppContainer(
   createMaterialTopTabNavigator(
@@ -18,29 +18,75 @@ export default createAppContainer(
         navigationOptions: () => ({
           tabBarLabel: "Promo",
           tabBarIcon: ({ focused, tintColor }) => (
-            <Image
-              source={require("@icons/promotion.png")}
-              style={[styles.img, (color = { tintColor })]}
-            />
+            <View style={{alignItems:'center',justifyContent:'center',marginBottom:10}}>
+            <ImageBackground
+              source={require("@images/printerback.png")}
+              style={{width:35,height:35,alignItems:'center',justifyContent:'center'}}
+            >
+              <Image
+                source={require("@images/electronicss.png")}
+                style={{width:15,height:15,}}
+              />
+            </ImageBackground>
+            </View>
           )
         })
       },
       MyPoint: {
         screen: MyPoint,
         navigationOptions: {
-          tabBarLabel: "My Point"
+          tabBarLabel: "My Point",
+          tabBarIcon: ({ focused, tintColor }) => (
+            <View style={{alignItems:'center',justifyContent:'center',marginBottom:10}}>
+            <ImageBackground
+              source={require("@images/printerback.png")}
+              style={{width:35,height:35,alignItems:'center',justifyContent:'center'}}
+            >
+              <Image
+                source={require("@images/electronicss.png")}
+                style={{width:15,height:15,}}
+              />
+            </ImageBackground>
+            </View>
+          )
         }
       },
       MyCoupons: {
         screen: MyCoupons,
         navigationOptions: {
-          tabBarLabel: "My Coupons"
+          tabBarLabel: "My Coupons",
+          tabBarIcon: ({ focused, tintColor }) => (
+            <View style={{alignItems:'center',justifyContent:'center',marginBottom:10}}>
+            <ImageBackground
+              source={require("@images/printerback.png")}
+              style={{width:35,height:35,alignItems:'center',justifyContent:'center'}}
+            >
+              <Image
+                source={require("@images/electronicss.png")}
+                style={{width:15,height:15,}}
+              />
+            </ImageBackground>
+            </View>
+          )
         }
       },
       PromoSilent: {
         screen: PromoSilent,
         navigationOptions: {
-          tabBarLabel: "Promo"
+          tabBarLabel: "Promo",
+          tabBarIcon: ({ focused, tintColor }) => (
+            <View style={{alignItems:'center',justifyContent:'center',marginBottom:10}}>
+            <ImageBackground
+              source={require("@images/printerback.png")}
+              style={{width:35,height:35,alignItems:'center',justifyContent:'center'}}
+            >
+              <Image
+                source={require("@images/electronicss.png")}
+                style={{width:15,height:15,}}
+              />
+            </ImageBackground>
+            </View>
+          )
         }
       }
     },
@@ -48,17 +94,19 @@ export default createAppContainer(
     {
       initialRouteName: "Promotion",
       tabBarOptions: {
-        // showIcon: true,
-        // showLabel: true,
+        showIcon: true,
+        showLabel: true,
         activeTintColor: "black",
         inactiveTintColor: "black",
         // scrollEnabled: true,
         upperCaseLabel: false,
         style: {
-          backgroundColor: "white"
+          backgroundColor: "white",
         },
         labelStyle: {
-          fontSize: 15
+          fontSize: 11,
+          // color:'red',
+          alignItems:'center',
         },
         indicatorStyle: {
           // width: 500,

@@ -41,11 +41,11 @@ export default createAppContainer(
           tabBarIcon: ({ focused, tintColor }) => (
             <View style={{alignItems:'center',justifyContent:'center',marginBottom:10}}>
             <ImageBackground
-              source={require("@images/printerback.png")}
+              source={require("@images/computer.png")}
               style={{width:35,height:35,alignItems:'center',justifyContent:'center'}}
             >
               <Image
-                source={require("@images/electronicss.png")}
+                source={require("@icons/promotions.png")}
                 style={{width:15,height:15,}}
               />
             </ImageBackground>
@@ -64,7 +64,7 @@ export default createAppContainer(
           tabBarIcon: ({ focused, tintColor }) => (
             <View style={{alignItems:'center',justifyContent:'center',marginBottom:10}}>
             <ImageBackground
-              source={require("@images/moreback.png")}
+              source={require("@images/electronicback.png")}
               style={{width:35,height:35,alignItems:'center',justifyContent:'center'}}
             >
               <Image
@@ -112,7 +112,7 @@ export default createAppContainer(
         },
         labelStyle: {
           fontSize: 11,
-          color:'red',
+          // color:'red',
           alignItems:'center',
         },
         indicatorStyle: {

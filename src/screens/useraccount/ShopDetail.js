@@ -7,12 +7,14 @@ import {
   Image,
   ScrollView,
   TouchableOpacity,
-  TextInput
+  TextInput,
+  ImageBackground,
 } from "react-native";
 // import { TextInput } from "react-native-gesture-handler";
 import DatePicker from "react-native-datepicker";
 //import Component
 import PurchaseCard from "@components/PurchaseCard";
+import Radio from "@components/Radio";
 export default class Service extends React.Component {
   constructor(props) {
     super(props);
@@ -24,10 +26,21 @@ export default class Service extends React.Component {
         <StatusBar hidden={true}></StatusBar>
         <View style={styles.header}>
           <View style={styles.textContainer}>
-            <Image
-              source={require("@images/cart.png")}
-              style={styles.cartimg}
-            />
+            <ImageBackground
+              source={require("@icons/cyclewhite.png")}
+              style={{
+                width: 80,
+                height: 80,
+                justifyContent: "center",
+                alignItems: "center"
+              }}
+            >
+              <Image
+                source={require("@icons/shop.png")}
+                style={{ width: 50, height: 50 }}
+              />
+            </ImageBackground>
+
             <View style={{ marginTop: 20 }}>
               <Text style={styles.pointText}>Total Purchase</Text>
               <Text style={[styles.pointText, { marginLeft: 85 }]}>Point</Text>
@@ -107,6 +120,12 @@ export default class Service extends React.Component {
               />
             </View>
           </View>
+          <View style={[styles.searchContainer,{justifyContent:"space-around"}]}>
+           <Radio label="Cash"/>
+           <Radio label="Credit"/>
+           <Text>Amounts</Text>
+           <Text style={{color:"#3C7AF4"}}>12,000,000ks</Text>
+          </View>
           <View style={styles.searchContainer}>
             <Text style={styles.paymentText}>Payment Method</Text>
             <TextInput style={styles.paymentInput}></TextInput>
@@ -174,7 +193,9 @@ export default class Service extends React.Component {
           <Text style={styles.footerText}>
             "Thank so much for your Purchase"
           </Text>
-          <TouchableOpacity activeOpacity={0.8}>
+          <TouchableOpacity
+           activeOpacity={0.8}
+           >
             <Image
               source={require("@images/back.png")}
               style={styles.backImg}
@@ -195,8 +216,8 @@ const styles = StyleSheet.create({
   },
   header: {
     width: "100%",
-    height: "20%",
-    backgroundColor: "#F68F74",
+    height: "25%",
+    backgroundColor: "#40BFEF",
     justifyContent: "center"
   },
   textContainer: {
@@ -285,7 +306,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10
   },
   headerText: {
-    color: "#1431EB",
+    // color: "#1431EB",
     fontSize: 15,
     fontWeight: "bold"
   },
@@ -299,7 +320,7 @@ const styles = StyleSheet.create({
     alignItems: "center"
   },
   footerText: {
-    color: "#1431EB",
+    color: "#407CF4",
     fontSize: 15
   },
   backImg: {

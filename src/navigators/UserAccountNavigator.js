@@ -5,10 +5,16 @@ import {createStackNavigator} from "react-navigation-stack";
 //import screen
 import Account from "@screens/useraccount/Account";
 import Boucher from "@screens/useraccount/Boucher";
+import ShopDetail from "@screens/useraccount/ShopDetail";
+import OnlineDetail from "@screens/useraccount/OnlineDetail";
 // import Message from "@screens/useraccount/Message";
+
+//import components
+import Back from "@components/Back";
 
 //import navigator
 import UserAccountNavigator from "./UserAccountTopTabNavigator";
+import OrderNavigator from "./AccountOrderNavigation";
 
 export default createAppContainer(
     createStackNavigator(
@@ -22,47 +28,48 @@ export default createAppContainer(
          Boucher:{
             screen:Boucher,
             navigationOptions:()=>({
-                header:null
+               headerShown:false
             })
+        },
+        ShopDetail:{
+          screen:ShopDetail,
+         navigationOptions:()=>({
+             headerShown:false
+         })
+        },
+        OnlineDetail:{
+          screen:OnlineDetail,
+          navigationOptions:()=>({
+              headerShown:false
+          })
+        },
+        OrderNavigator:{
+           screen:OrderNavigator,
+           navigationOptions:{
+               title:"My Orders",
+            //    headerLeft:()=><Back/>,
+               headerStyle:{elevation:0,shadowOpacity:0,backgroundColor:"#F2F2F2"},
+               headerTitleAlign:{
+                   justifyContent:"center",
+                   alignItem:"center"
+               },
+            
+           }
         },
         UserAccountNavigator:{
             screen:UserAccountNavigator,
             navigationOptions: {
                 title: "Message",
-                headerStyle: {elevation: 0},
+                // headerLeft:()=><Back/>,
+                headerStyle: {elevation:0,shadowOpacity:0},
                 headerTitleAlign:{
                     justifyContent:'center',
                     alignItem:'center',
                 },
-                headerTitleStyle: {
-                  color: "black",
-                  textAlign: "center",
-                  width: 250,
-                  fontSize:16,
-                  fontWeight:"300",
-                },
+             
               }
-        }
-        // Message: {
-        //     screen: Message,
-        //     navigationOptions: () => ({
-        //       title: "Message",
-        //       headerStyle: { backgroundColor: "#27C79D", textAlignVertical:'center' },
-            //   headerTitleAlign:{
-            //       justifyContent:'center',
-            //       alignItem:'center',
-            //   },
-            //   headerTitleStyle: {
-            //     color: "black",
-            //     textAlign: "center",
-            //     width: 250,
-            //     fontSize:16,
-            //     fontWeight:"300",
-            //   },
-        //     //   headerLeft:null,
-        //       // header:null,
-        //     })
-        //   }
+        },
+      
         },
         {
           initialRouteName:"Account"
