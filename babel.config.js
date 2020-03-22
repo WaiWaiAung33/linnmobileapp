@@ -15,7 +15,10 @@ module.exports = function(api) {
            "@images": "./assets/images",
            "@icons": "./assets/icons",
            "@fonts": "./assets/fonts",
-           "@components": "./src/components"
+           "@components": "./src/components",
+           "@styles":"./src/styles",
+           "@consts": "./src/consts",
+           "@apis": "./src/apis",
          
          }
         }
