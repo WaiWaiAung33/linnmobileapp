@@ -1,11 +1,14 @@
 import React from "react";
-import {View,Image,StyleSheet} from "react-native";
+import {View,Image,StyleSheet,TouchableOpacity} from "react-native";
 
 export default class Back extends React.Component{
     render(){
         return(
             <View style={styles.container}>
-                <Image source={require("@images/backs.png")} style={styles.img}/>
+                <TouchableOpacity onPress={()=>this.props.navigation.navigate("PhoneDrawer")}>
+                <Image source={require("@images/more.png")} style={styles.img}/>
+                </TouchableOpacity>
+               
             </View>
         )
     }

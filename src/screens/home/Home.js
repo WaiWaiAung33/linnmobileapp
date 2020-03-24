@@ -12,6 +12,7 @@ import {
 const axios = require("axios");
 
 import { promotionImagePath } from "@consts/Urls";
+import { sliderImagePath } from "@consts/Urls";
 // import HomeCard from "./component/HomeCard";
 
 import { SliderBox } from "react-native-image-slider-box";
@@ -26,13 +27,20 @@ export default class Home extends React.Component {
       //   require("@images/promotions.png")
       // ],
       promotion: [],
-      images: []
+      images: [],
+      bestbuy: [],
+      toplist: [],
+      topselling: []
     };
     this.getSlider = this.getSlider.bind(this);
   }
   async componentDidMount() {
     this.getSlider();
     this.getAllPromotion();
+    // this.getPopular();
+    this.getBestBuy();
+    this.getTopList();
+    this.getTopSelling();
   }
   getSlider() {
     const self = this;
@@ -60,6 +68,44 @@ export default class Home extends React.Component {
         console.log(error);
       });
   }
+  getTopList() {
+    const self = this;
+    axios
+      .get("http://103.83.190.197/LinnOnlineShop-Laravel-/public/api/toplist")
+      .then(function(response) {
+        // console.log(response.data.data);
+        self.setState({ toplist: response.data.data });
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
+  }
+  getBestBuy() {
+    const self = this;
+    axios
+      .get("http://103.83.190.197/LinnOnlineShop-Laravel-/public/api/bestBuy")
+      .then(function(response) {
+        // console.log(response.data.data);
+        self.setState({ bestbuy: response.data.data });
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
+  }
+  getTopSelling() {
+    const self = this;
+    axios
+      .get(
+        "http://103.83.190.197/LinnOnlineShop-Laravel-/public/api/topselling"
+      )
+      .then(function(response) {
+        // console.log(response.data.data);
+        self.setState({ topselling: response.data.data });
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
+  }
   render() {
     return (
       <View style={{ flex: 1 }}>
@@ -80,17 +126,24 @@ export default class Home extends React.Component {
           </View>
           <View>
             {this.state.images.forEach(images => {
-              {
-                // console.log(images)
-                images.photo && (
-                  <SliderBox
-                    circleLoop
-                    autoplay
-                    images={images.photo}
-                  />
-                   
-                );
-              }
+              return (
+                <View>
+                  {images.photo ? (
+                    <View>
+                      <SliderBox
+                        circleLoop
+                        autoplay
+                        images={{ uri: sliderImagePath + images.photo }}
+                        //  sliderBoxHeight={400}
+                        //  sliderBoxWidth={200}
+                      />
+                    </View>
+                  ) : (
+                    <Text>Hello</Text>
+                  )}
+                </View>
+              );
+              // console.log(images)
             })}
           </View>
 
@@ -102,15 +155,20 @@ export default class Home extends React.Component {
         <ScrollView>
           <View style={styles.type}>
             <View>
-              <ImageBackground
-                source={require("@images/phoneback.png")}
-                style={styles.imageBackground}
+              <TouchableOpacity
+                onPress={() => this.props.navigation.navigate("Category",{cat_id:1})}
               >
-                <Image source={require("@images/phone.png")} />
-              </ImageBackground>
-              <Text>Phone</Text>
+                <ImageBackground
+                  source={require("@images/phoneback.png")}
+                  style={styles.imageBackground}
+                >
+                  <Image source={require("@images/phone.png")} />
+                </ImageBackground>
+                <Text>Phone</Text>
+              </TouchableOpacity>
             </View>
             <View>
+              <TouchableOpacity onPress={()=>this.props.navigation.navigate("Category",{cat_id:2})}>
               <ImageBackground
                 source={require("@images/tabletback.png")}
                 style={styles.imageBackground}
@@ -121,9 +179,12 @@ export default class Home extends React.Component {
                 />
               </ImageBackground>
               <Text>Tablet</Text>
+              </TouchableOpacity>
+             
             </View>
 
             <View>
+              <TouchableOpacity onPress={()=>this.props.navigation.navigate("Category",{cat_id:3})}>
               <ImageBackground
                 source={require("@images/computer.png")}
                 style={styles.imageBackground}
@@ -134,9 +195,13 @@ export default class Home extends React.Component {
                 />
               </ImageBackground>
               <Text>Computer</Text>
+
+              </TouchableOpacity>
+             
             </View>
 
             <View>
+              <TouchableOpacity onPress={()=>this.props.navigation.navigate("Category",{cat_id:4})}>
               <ImageBackground
                 source={require("@images/printerback.png")}
                 style={styles.imageBackground}
@@ -147,9 +212,13 @@ export default class Home extends React.Component {
                 />
               </ImageBackground>
               <Text>Printer</Text>
+
+              </TouchableOpacity>
+              
             </View>
 
             <View>
+              <TouchableOpacity onPress={()=>this.props.navigation.navigate("Category",{cat_id:5})}>
               <ImageBackground
                 source={require("@images/electronicback.png")}
                 style={styles.imageBackground}
@@ -166,6 +235,9 @@ export default class Home extends React.Component {
                 </View>
               </ImageBackground>
               <Text>Electronic</Text>
+
+              </TouchableOpacity>
+            
             </View>
 
             <View>
@@ -221,11 +293,22 @@ export default class Home extends React.Component {
                           <Text style={{ color: "white" }}>{data.percent}</Text>
                         </View>
                       </View>
-                      <Image
-                        source={{
-                          uri: promotionImagePath + data.photo
-                        }}
-                      />
+                      {data.photo ? (
+                        <View
+                          style={{
+                            justifyContent: "center",
+                            alignItems: "center"
+                          }}
+                        >
+                          <Image
+                            source={{
+                              uri: promotionImagePath + data.photo
+                            }}
+                            style={{ width: 80, height: 100 }}
+                          />
+                        </View>
+                      ) : null}
+
                       <View style={{ flexDirection: "row", margin: 10 }}>
                         <Text style={styles.sold}>5sold</Text>
                         <Text style={{ marginLeft: 5 }}>{data.price}</Text>
@@ -251,45 +334,89 @@ export default class Home extends React.Component {
               horizontal={true}
               showsHorizontalScrollIndicator={false}
             >
-              <View style={styles.card}>
-                <View style={styles.popularContainer}>
-                  <Text style={{ color: "#BCFF00", fontWeight: "bold" }}>
-                    Mobile Phone
-                  </Text>
-                  <Text style={{ color: "#BCFF00" }}>Top List</Text>
-                </View>
+              {this.state.toplist.map((data, index) => {
+                return (
+                  <View key={index}>
+                    <View style={styles.card}>
+                      <View style={styles.popularContainer}>
+                        <Text style={{ color: "#BCFF00", fontWeight: "bold" }}>
+                          {data.categoryName}
+                        </Text>
+                        <Text style={{ color: "#BCFF00" }}>Top List</Text>
+                      </View>
+                      {data.photo ? (
+                        <View>
+                          <Image
+                            source={{ uri: promotionImagePath + data.photo }}
+                            style={{ marginTop: 10, width: 100, height: 100 }}
+                          />
+                        </View>
+                      ) : (
+                        <Image
+                          source={require("@images/note7.png")}
+                          style={{ marginTop: 10 }}
+                        />
+                      )}
+                    </View>
+                  </View>
+                );
+              })}
 
-                <Image
-                  source={require("@images/note7.png")}
-                  style={{ marginTop: 10 }}
-                />
-              </View>
-              <View style={styles.card}>
-                <View style={styles.popularContainer}>
-                  <Text style={{ color: "#0088FF", fontWeight: "bold" }}>
-                    Computer
-                  </Text>
-                  <Text style={{ color: "#0088FF" }}>Top Selling</Text>
-                </View>
+              {this.state.bestbuy.map((data, index) => {
+                return (
+                  <View key={index}>
+                    <View style={styles.card}>
+                      <View style={styles.popularContainer}>
+                        <Text style={{ color: "#FFC400", fontWeight: "bold" }}>
+                          {data.categoryName}
+                        </Text>
+                        <Text style={{ color: "#FFC400" }}>Best Buy</Text>
+                      </View>
+                      {data.photo ? (
+                        <View>
+                          <Image
+                            source={{ uri: promotionImagePath + data.photo }}
+                            style={{ marginTop: 10, width: 100, height: 100 }}
+                          />
+                        </View>
+                      ) : (
+                        <Image
+                          source={require("@images/note7.png")}
+                          style={{ marginTop: 10 }}
+                        />
+                      )}
+                    </View>
+                  </View>
+                );
+              })}
 
-                <Image
-                  source={require("@images/laptopPC.png")}
-                  style={{ marginTop: 10 }}
-                />
-              </View>
-              <View style={styles.card}>
-                <View style={styles.popularContainer}>
-                  <Text style={{ color: "#FFC400", fontWeight: "bold" }}>
-                    Electronic
-                  </Text>
-                  <Text style={{ color: "#FFC400" }}>Best Buy</Text>
-                </View>
-
-                <Image
-                  source={require("@images/electronic.png")}
-                  style={{ marginTop: 10 }}
-                />
-              </View>
+              {this.state.topselling.map((data, index) => {
+                return (
+                  <View key={index}>
+                    <View style={styles.card}>
+                      <View style={styles.popularContainer}>
+                        <Text style={{ color: "#0088FF", fontWeight: "bold" }}>
+                          {data.categoryName}
+                        </Text>
+                        <Text style={{ color: "#0088FF" }}>Top Selling</Text>
+                      </View>
+                      {data.photo ? (
+                        <View>
+                          <Image
+                            source={{ uri: promotionImagePath + data.photo }}
+                            style={{ marginTop: 10, width: 100, height: 100 }}
+                          />
+                        </View>
+                      ) : (
+                        <Image
+                          source={require("@images/note7.png")}
+                          style={{ marginTop: 10 }}
+                        />
+                      )}
+                    </View>
+                  </View>
+                );
+              })}
             </ScrollView>
           </View>
 

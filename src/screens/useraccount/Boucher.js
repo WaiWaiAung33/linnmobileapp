@@ -123,8 +123,8 @@ const styles = StyleSheet.create({
         marginTop: 30
     },
     tableHeader: { flexDirection: 'row' },
-    column: { borderLeftWidth: 2, borderBottomWidth: 2, width: '40%' },
-    row: { borderBottomWidth: 2, borderTopWidth: 2, },
+    column: { borderLeftWidth: 2, borderBottomWidth: 2, width: '40%',borderTopWidth:2 },
+    row: { borderBottomWidth: 2, },
     total: {
         backgroundColor: '#afafaf',
         width: '35%',
